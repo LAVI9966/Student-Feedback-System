@@ -23,6 +23,9 @@ import HeadFaculties from "./Component/Admin/HeadFaculties";
 import FacultyHeadHome from "./Component/Faculty/FacultyHeadHome";
 import AdddFacultyPage from "./Component/Faculty/AdddFacultyPage";
 import SubmitRatingPageFaculty from "./Component/Student/SubmitRatingPageFaculty";
+import CourseRatingshow from "./Component/Faculty/CourseRatingshow";
+import FacultyRatingshow from "./Component/Faculty/FacultyRatingShow";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -63,6 +66,14 @@ function App() {
           <Route
             path="/facultyheadhome"
             element={<Protected Component={FacultyHeadHome} />}
+          ></Route>
+          <Route
+            path="/showcourserating/:courseId"
+            element={<Protected Component={CourseRatingshow} />}
+          ></Route>
+          <Route
+            path="/facultyratingshow/:facultyId"
+            element={<Protected Component={FacultyRatingshow} />}
           ></Route>
           <Route
             //course id pass hori he

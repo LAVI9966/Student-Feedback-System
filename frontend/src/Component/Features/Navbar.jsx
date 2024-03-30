@@ -18,12 +18,12 @@ const Navbar = () => {
       setRole(decoded.role); // Update role based on decoded token
     }
   }, []); // Empty dependency array means this effect runs once on mount
-
   const deleteToken = () => {
     localStorage.removeItem("authToken");
     console.log("Token deleted");
-    navigate("/login"); // Use navigate for redirection
-    window.localStorage.href = "/login";
+    setRole("none"); // Update role to "none" to reflect logout
+    navigate("/login"); // Redirect to login page
+    window.location.reload();
   };
   return (
     <nav

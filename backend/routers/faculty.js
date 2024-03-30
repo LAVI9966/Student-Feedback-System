@@ -6,6 +6,8 @@ import { Course } from "../models/Course.js";
 import { Faculty } from "../models/faculty.js";
 const jwtkey = "mynameislavish";
 import { jwtDecode } from "jwt-decode";
+import { CourseRating } from "../models/CourseRating.js";
+import { FacultyRating } from "../models/facultyRating.js";
 const router = express.Router();
 router.use(express.json());
 router.use(cors());
@@ -117,5 +119,29 @@ router.delete("/deletefaculty/:id", async (req, res) => {
     console.error(error);
     return res.status(500).send({ message: "Internal server error" });
   }
+});
+router.get("/fetchcourseratings/:courseId", async (req, res) => {
+  const courseId = req.params.courseId;
+  console.log("ye id he", courseId);
+  try {
+    const rating = await CourseRating.find({ courseId });
+    if (rating) {
+      res.status(200).send(rating);
+    } else {
+      res.status(400).send({ message: "Rating Not Found" });
+    }
+  } catch (error) {}
+});
+router.get("/fetchfacultyratings/:facultyId", async (req, res) => {
+  const facultyId = req.params.facultyId;
+  console.log("ye id he", facultyId);
+  try {
+    const rating = await FacultyRating.find({ facultyId });
+    if (rating) {
+      res.status(200).send(rating);
+    } else {
+      res.status(400).send({ message: "Rating Not Found" });
+    }
+  } catch (error) {}
 });
 export default router;

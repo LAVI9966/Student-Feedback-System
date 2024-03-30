@@ -4,13 +4,14 @@ import axios from "axios";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+
 const DisplayCourseList = ({ facultyid }) => {
   const [fetchedcourse, setfetchedcourse] = useState([]);
 
   const handleDelete = async (courseId) => {
     try {
       await axios.delete(`http://localhost:8080/deletecourse/${courseId}`);
-      toast.success("Couorse deleted successfully!", {
+      toast.success("Course deleted successfully!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -22,7 +23,7 @@ const DisplayCourseList = ({ facultyid }) => {
         transition: Bounce,
       });
     } catch (error) {
-      toast.error("An error occurred while deleting the faculty member.", {
+      toast.error("An error occurred while deleting the course.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -35,20 +36,22 @@ const DisplayCourseList = ({ facultyid }) => {
       });
     }
   };
+
   useEffect(() => {
     const fetch = async () => {
       try {
-        const responce = await axios.get(
+        const response = await axios.get(
           `http://localhost:8080/fetchcourse/${facultyid}`
         );
-        setfetchedcourse(responce.data);
-        console.log("disply course list se se ", responce.data);
+        setfetchedcourse(response.data);
+        console.log("display course list:", response.data);
       } catch (error) {
-        console.error("Error fetching faculty list:", error);
+        console.error("Error fetching course list:", error);
       }
     };
     fetch();
-  }, [setfetchedcourse]);
+  });
+
   return (
     <div className="card">
       <div className="card-header">Course List</div>
@@ -83,6 +86,11 @@ const DisplayCourseList = ({ facultyid }) => {
                     <Link to={`/addfacultypage/${course._id}`}>
                       <button className="btn btn-primary btn-sm">
                         Add Faculty
+                      </button>
+                    </Link>
+                    <Link to={`/showcourserating/${course._id}`}>
+                      <button className="btn btn-info btn-sm">
+                        Show Ratings
                       </button>
                     </Link>
                   </td>

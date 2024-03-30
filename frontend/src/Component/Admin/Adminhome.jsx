@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Ensure Bootstrap CSS is imported
 import RatingsDisplay from "./RatingDisplay";
 import { Link } from "react-router-dom";
 import Container from "../../Container";
+import axios from "axios";
 const Adminhome = () => {
-  const mockRatings = [
-    [1, 2, 3, 4, 5],
-    [2, 3, 4, 5, 1],
-    [5, 4, 3, 2, 1],
-    [3, 4, 5, 1, 2],
-    [4, 5, 1, 2, 3],
-  ];
   return (
     <Container>
       <div className="container mt-5">
@@ -45,9 +39,7 @@ const Adminhome = () => {
             </div>
           </div>
         </div>
-        {mockRatings.map((item) => {
-          return <RatingsDisplay mockRatings={item}></RatingsDisplay>;
-        })}
+        <RatingsDisplay></RatingsDisplay>;
       </div>
     </Container>
   );

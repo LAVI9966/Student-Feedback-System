@@ -38,7 +38,7 @@ const FacultyList = () => {
               >
                 <div className="card-body d-flex flex-column">
                   <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="card-title mb-3">{faculty.name}</h5>
+                    <h1 className="card-title mb-3">{faculty.name}</h1>
                   </div>
                   <p className="card-text mb-2">
                     <small className="font-weight-bold">

@@ -10,6 +10,15 @@ const CourseList = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const token = localStorage.getItem("authToken");
+  let decodedToken = null;
+  if (typeof token === "string") {
+    try {
+      decodedToken = jwtDecode(token);
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      // Handle the error appropriately, e.g., by setting decodedToken to null or an empty object
+    }
+  }
   const decoded = jwtDecode(token);
   const studentdata = {
     id: decoded.id,

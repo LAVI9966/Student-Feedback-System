@@ -83,6 +83,13 @@ const DisplayFacultyList = ({ _id }) => {
                         </button>
                       </Link>
                     </td>
+                    <td>
+                      <Link to={`/facultyratingshow/${faculty._id}`}>
+                        <button className="btn btn-primary btn-sm">
+                          Show Ratings
+                        </button>
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>

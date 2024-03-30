@@ -114,23 +114,22 @@ const SubmitRatingPage = () => {
         <div className="container py-5">
           <div className="row justify-content-center">
             <div className="col-md-6">
-              <h2 className="text-center">
+              <h2 className="text-center bg-primary rounded p-1">
                 Submit Your Ratings For {coursename}
               </h2>
               <form onSubmit={handleSubmit}>
                 {[
-                  "question1",
-                  "question2",
-                  "question3",
-                  "question4",
-                  "question5",
-                  "comments",
+                  "How would you rate the course content?",
+                  "How would you rate the difficulty of the course?",
+                  "How would you rate the workload of the course?",
+                  "How would you rate the overall course experience?",
+                  "How would you rate the course's relevance to your field of study?",
                 ].map((question) => (
                   <>
                     <div key={question} className="mb-3">
                       <label className="form-label">{question}</label>
                       <select
-                        className="form-select"
+                        className="form-select bg-secondary"
                         id={question}
                         name={question}
                         value={ratings[question]}
