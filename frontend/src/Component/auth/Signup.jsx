@@ -27,7 +27,6 @@ const Signup = () => {
       !formData.role ||
       !formData.email ||
       !formData.password ||
-      !formData.sem ||
       !formData.name
     ) {
       toast.warn("Provide All data!!", {
